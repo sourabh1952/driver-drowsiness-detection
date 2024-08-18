@@ -4,6 +4,7 @@ import torch
 from PIL import Image 
 import numpy as np 
 import time
+from ultralytics import YOLO
 # from playsound import playsound
 # for html 
 st.markdown("""
@@ -25,8 +26,8 @@ FRAME_WINDOW = st.image([]) #frame window
 st.markdown("""<h2 style='text-align: center;'>Here I want to position the camera.</h2>""", unsafe_allow_html=True) #title
 
 run = st.checkbox("Start") #checkbox
-#capture video
-model=torch.hub.load('ultralytics/yolov5', 'custom', path='C:\\Users\\Hp\\Desktop\\projectDS3\\yolov5\\runs\\train\\exp5\\weights\\last.pt',force_reload=True) # weights are stored and accessed using the path given 
+#capture video 
+model = torch.hub.load('ultralytics/yolov5', 'custom', path='C:/Users/HP/Desktop/driver-drowsy-detection/Automatic_Alarm_for_Driver_Drowsiness_Detection/proj/best.pt', force_reload=True)
  
 if run == True: # frame will render 
     capture_vid=cv2.VideoCapture(0) # capturing the video 
@@ -38,8 +39,7 @@ if run == True: # frame will render
         results=model(frame) # fitting the model 
         print(results)
         x=str(results) 
-        a=x[21:27] 
-        
+        a=x[21:27]
         if(a=="drowsy"):
            sound = st.empty()
            sound.markdown(html_string, unsafe_allow_html=True) 

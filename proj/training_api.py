@@ -16,7 +16,7 @@ from PIL import Image, ImageTk
 
 
 
-img_path = os.path.join('data', 'images')
+img_path = os.path.join('datatest', 'images')
 img_labels = ['awake', 'drowsy']
 number_imgs = 20
 
